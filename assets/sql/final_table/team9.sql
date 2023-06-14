@@ -4,7 +4,6 @@ use team9;
 create table Actor
 (
     ActorID      int          not null
-        constraint `PRIMARY`
         primary key,
     Name         varchar(255) null,
     Nationality  varchar(255) null,
@@ -16,7 +15,6 @@ create table Actor
 create table Director
 (
     DirectorID   int          not null
-        constraint `PRIMARY`
         primary key,
     Name         varchar(255) null,
     Nationality  varchar(255) null,
@@ -28,7 +26,6 @@ create table Director
 create table Movie
 (
     MovieID     int          not null
-        constraint `PRIMARY`
         primary key,
     Title       varchar(255) null,
     DirectorID  int          null,
@@ -64,7 +61,6 @@ create table MovieActor
 create table MovieGenre
 (
     GenreID   int          not null
-        constraint `PRIMARY`
         primary key,
     GenreName varchar(255) null
 );
@@ -85,7 +81,6 @@ create table MovieAndGenre
 create table User
 (
     UserID     varchar(20)  not null
-        constraint `PRIMARY`
         primary key,
     Username   varchar(255) null,
     Password   varchar(255) null,
@@ -96,7 +91,6 @@ create table User
 create table Review
 (
     ReviewID   int auto_increment
-        constraint `PRIMARY`
         primary key,
     MovieId    int           null,
     Rating     decimal(3, 1) null,
@@ -119,7 +113,6 @@ create table UserMovieFavorite
 (
     UserID  varchar(20) not null,
     MovieID int         not null,
-    constraint `PRIMARY`
         primary key (UserID, MovieID),
     constraint usermoviefavorite_ibfk_1
         foreign key (UserID) references User (UserID),
@@ -129,4 +122,3 @@ create table UserMovieFavorite
 
 create index MovieID
     on UserMovieFavorite (MovieID);
-

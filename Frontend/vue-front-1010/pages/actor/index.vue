@@ -28,12 +28,12 @@
               <li v-for=" actor in data.items" :key="actor.actorID" class="flex-item">
                 <section class="i-teach-wrap">
                   <div class="i-teach-pic">
-                    <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank">
+                    <a :href="'/actor/'+actor.actorID" :title="actor.name" >
                       <img class="rounded-image" :src="baseUrl+actor.imagePath" :alt="actor.name">
                     </a>
                   </div>
                   <div class="mt10 hLh30 txtOf tac">
-                    <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666 movieTitleFont">{{actor.name}}</a>
+                    <a :href="'/actor/'+actor.actorID" :title="actor.name"  class="fsize18 c-666 movieTitleFont">{{actor.name}}</a>
                   </div>
                   <!-- <div class="hLh30 txtOf tac">
                     <span class="fsize14 c-999">{{actor.notableWorks}}</span>

@@ -1,11 +1,2 @@
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 1);
 INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 21);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('4', 21);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 22);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 23);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('4', 23);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 26);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('4', 26);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 30);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 31);
-INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('2', 32);
+INSERT INTO team9.UserMovieFavorite (UserID, MovieID) VALUES ('1669044195060293634', 22);
