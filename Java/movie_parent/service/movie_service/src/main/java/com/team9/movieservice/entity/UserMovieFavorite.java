@@ -29,7 +29,7 @@ public class UserMovieFavorite implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "UserID", type = IdType.ID_WORKER_STR)
-    private Integer UserID;
+    private String UserID;
 
     @TableField("MovieID")
     private Integer MovieID;

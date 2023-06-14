@@ -50,7 +50,7 @@ public class ReviewServiceImpl extends ServiceImpl<ReviewMapper, Review> impleme
         if(StringUtils.isEmpty(review.getContent())){
             throw new EasyPcException(20001, "The content can not be empty");
         }
-        Integer UserId = review.getUserID();
+        String UserId = review.getUserID();
         Integer movieId = review.getMovieId();
 
         QueryWrapper<Review> wrapper = new QueryWrapper<>();

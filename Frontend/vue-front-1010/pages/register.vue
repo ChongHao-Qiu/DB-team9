@@ -19,7 +19,7 @@
           <el-form-item class="input-prepend restyle no-radius" prop="mobile" :rules="[{ required: true, message: 'Please enter your email', trigger: 'blur' },{validator: checkEmail, trigger: 'blur'}]">
             <div>
               <el-input type="text" placeholder="Your email account" v-model="params.email"/>
-              <i class="iconfont icon-phone"/>
+              <i class=" iconfont iconfont2" />
             </div>
           </el-form-item>
   
@@ -98,4 +98,17 @@
       }
     }
   </script>
+  <style scoped>
+      i.iconfont2 {
+        margin-top: 8px;
+        margin-right: 10px;
+        margin-left: -4px;
+        display: inline-block;
+        width: 24px; /* Set the width of your icon */
+        height: 24px; /* Set the height of your icon */
+        background-image: url('assets/mail.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+  </style>
   

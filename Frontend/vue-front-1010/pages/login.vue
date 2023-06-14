@@ -12,7 +12,7 @@
           <el-form-item class="input-prepend restyle" prop="email" :rules="[{ required: true, message: 'please enter your email', trigger: 'blur' },{validator: checkEmail, trigger: 'blur'}]">
             <div >
               <el-input type="text" placeholder="Your email account" v-model="user.email"/>
-              <i class="iconfont icon-phone" />
+              <i class=" iconfont iconfont2" />
             </div>
           </el-form-item>
   
@@ -71,7 +71,7 @@
               .then(response =>{
                 //Step2: 获取token 放入cookie中
                 this.token = response.data.data.token
-                cookie.set('team9_token',response.data.data.token,{domain:'localhost'})
+                cookie.set('team9_token',response.data.data.token,{domain:'192.168.1.108'})
                 //Step3:創建攔截器
                 //已經在request.js中實現
                 //Step4: 根據token 獲取用戶信息，為了首頁顯示
@@ -79,7 +79,7 @@
                   .then(response =>{
                     this.loginInfo = JSON.stringify(response.data.data.userInfo)
                     console.log("!!info:"+JSON.stringify(this.loginInfo))
-                    cookie.set('team9_user', this.loginInfo,{domain:'localhost'})
+                    cookie.set('team9_user', this.loginInfo,{domain:'192.168.1.108'})
                     
                     //跳轉登陸頁面
                     window.location.href = "/"
@@ -99,5 +99,16 @@
   <style> 
      .el-form-item__error{
       z-index: 9999999;
+    }
+    i.iconfont2 {
+        margin-top: 8px;
+        margin-right: 10px;
+        margin-left: -4px;
+        display: inline-block;
+        width: 24px; /* Set the width of your icon */
+        height: 24px; /* Set the height of your icon */
+        background-image: url('assets/mail.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
     }
   </style>

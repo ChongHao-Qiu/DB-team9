@@ -2,7 +2,7 @@ import axios from 'axios'
 import cookie from 'js-cookie'
 
 const service = axios.create({
-    baseURL:'http://localhost:8201',
+    baseURL:'http://192.168.1.108:8201',
     timeout:20000 //请求超过的时间
 })
 

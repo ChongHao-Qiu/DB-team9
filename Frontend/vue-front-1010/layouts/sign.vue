@@ -1,7 +1,9 @@
 <template>
     <div class="sign" >
         <div class="logo">
-            <img src="~/assets/img/logo.png" alt="logo">
+            <a href="/" title="mymovie">
+            <img src="~/assets/img/logo.png" width="100%" alt="mmymovie">
+          </a>
         </div>
 
         <nuxt/>

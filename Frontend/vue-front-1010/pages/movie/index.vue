@@ -85,7 +85,7 @@
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA" style="font-size: 15px;">Official Rate: {{ item.rateAvg }}</i>
                         |
-                        <i class="c-999 f-fA" style="font-size: 15px;">Release Date: {{ item.releaseDate | formatDate }}</i>
+                        <i class="c-999 f-fA" style="font-size: 15px;">{{ item.releaseDate | formatDate }}</i>
                       </span>
                     </section>
                   </div>

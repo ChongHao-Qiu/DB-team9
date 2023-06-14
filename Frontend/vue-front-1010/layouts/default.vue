@@ -4,8 +4,8 @@
     <header id="header">
       <section class="container">
         <h1 id="logo">
-          <a href="/" title="谷粒学院">
-            <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院">
+          <a href="/" title="mymovie">
+            <img src="~/assets/img/logo.png" width="100%" alt="mmymovie">
           </a>
         </h1>
         <div class="h-r-nsl">
@@ -159,8 +159,8 @@ export default {
     },
     exit(){
       console.log("exit excuted")
-      cookie.set('team9_token','',{domain:'localhost'})
-      cookie.set('team9_user','',{domain:'localhost'})
+      cookie.set('team9_token','',{domain:'192.168.1.108'})
+      cookie.set('team9_user','',{domain:'192.168.1.108'})
       //
       window.location.href="/"
     },

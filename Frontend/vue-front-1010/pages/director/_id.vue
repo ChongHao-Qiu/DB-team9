@@ -225,4 +225,8 @@ export default {
   margin-left: 20px; /* 设定与movie-poster的距离 */
 }
 
+.movieTitleFont{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 22px;
+}
 </style>

@@ -40,7 +40,7 @@ public class UserMovieFavoriteController {
     }
 
     @GetMapping("isCollect/{uid}/{mid}")
-    public R isCollect(@PathVariable Integer uid,@PathVariable Integer mid){
+    public R isCollect(@PathVariable String uid,@PathVariable Integer mid){
         QueryWrapper<UserMovieFavorite> wrapper = new QueryWrapper<>();
         wrapper.eq("UserID",uid);
         wrapper.eq("MovieID",mid);
