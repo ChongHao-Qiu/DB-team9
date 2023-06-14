@@ -4,7 +4,7 @@
     <section class="container">
       <header class="comm-title all-actor-title">
         <h2 class="fl tac">
-          <span class="c-333">All Actors</span>
+          <span class="c-333 custom-font">All Actors</span>
         </h2>
         <!-- <section class="c-tab-title">
         </section> -->
@@ -33,11 +33,11 @@
                     </a>
                   </div>
                   <div class="mt10 hLh30 txtOf tac">
-                    <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666">{{actor.name}}</a>
+                    <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666 movieTitleFont">{{actor.name}}</a>
                   </div>
-                  <div class="hLh30 txtOf tac">
+                  <!-- <div class="hLh30 txtOf tac">
                     <span class="fsize14 c-999">{{actor.notableWorks}}</span>
-                  </div>
+                  </div> -->
                 </section>
               </li>
             </ul>
@@ -46,12 +46,12 @@
         </div>
         <div>
           <div class="paging">
-            <a :class="{undisable: !data.hasPrevious}" href="#"  title="首页" @click.prevent="gotoPage(1)">首</a>
+            <a :class="{undisable: !data.hasPrevious}" href="#"  title="首页" @click.prevent="gotoPage(1)">First</a>
             <a :class="{undisable: !data.hasPrevious}" href="#" title="前一页" @click.prevent="gotoPage(data.current-1)">&lt;</a>
             <a v-for="page in data.pages" :key="page" :class="{ current: data.current == page, undisable: data.current == page}"
              href="#" :title="'第'+page+'页'" @click.prevent="gotoPage(page)">{{ page }}</a>
             <a :class="{undisable: !data.hasNext}" href="#" title="后一页" @click.prevent="gotoPage(data.current+1)">&gt;</a>
-            <a :class="{undisable: !data.hasNext}" href="#"  title="末页" @click.prevent="gotoPage(data.pages)">末页</a>
+            <a :class="{undisable: !data.hasNext}" href="#"  title="末页" @click.prevent="gotoPage(data.pages)">Last</a>
             <div class="clear"></div>
           </div>
         </div>
@@ -111,5 +111,17 @@ export default {
 
 .flex-item {
   flex: 1 0 auto;
+}
+
+.custom-font {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 26px; /* 修改为您想要的字体大小 */
+    font-weight: bold; /* 修改为您想要的字体粗细 */
+  
+  }
+
+  .movieTitleFont{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 22px;
 }
 </style>

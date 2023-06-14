@@ -30,8 +30,11 @@ public class Review implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "ReviewID", type = IdType.ID_WORKER_STR)
+    @TableId(value = "ReviewID", type = IdType.AUTO)
     private Integer ReviewID;
+
+    @TableField("MovieId")
+    private Integer MovieId;
 
     @TableField("Rating")
     private BigDecimal Rating;

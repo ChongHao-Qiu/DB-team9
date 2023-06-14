@@ -2,6 +2,9 @@ package com.team9.movieservice.mapper;
 
 import com.team9.movieservice.entity.Director;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.team9.movieservice.entity.Movie;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface DirectorMapper extends BaseMapper<Director> {
 
+    List<Movie> getMoviesByDirectorID(String id);
 }

@@ -6,6 +6,7 @@ import com.team9.movieservice.entity.*;
 import com.team9.movieservice.entity.frontVo.MovieFrontVo;
 import com.team9.movieservice.entity.frontVo.MovieShowVo;
 import com.team9.movieservice.mapper.MovieMapper;
+import com.team9.movieservice.service.DirectorService;
 import com.team9.movieservice.service.MovieActorService;
 import com.team9.movieservice.service.MovieAndGenreService;
 import com.team9.movieservice.service.MovieService;
@@ -34,6 +35,9 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
 
     @Autowired
     private MovieActorService movieActorService;
+
+    @Autowired
+    private DirectorService directorService;
 
     @Override
     public List<String> getTopBanner() {
@@ -99,6 +103,9 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
         List<Actor> actorList = baseMapper.selectActorsByMovieId(movieId);
         List<MovieGenre> movieGenreList = baseMapper.selectGenresByMovieId(movieId);
 
+        Director director = directorService.getById(movie1.getDirectorID());
+
+        movie.setDirector(director);
         movie.setActorList(actorList);
         movie.setGenreList(movieGenreList);
         return movie;
@@ -108,5 +115,11 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
     public List<Movie> getNewMoviesByNum(Integer num) {
         List<Movie> movieList= baseMapper.getLatestMovies(num);
         return movieList;
+    }
+
+    @Override
+    public List<Movie> getCollectionByUserId(String uid) {
+        List<Movie> list = baseMapper.getCollectionByUserId(uid);
+        return list;
     }
 }

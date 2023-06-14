@@ -43,5 +43,8 @@ public class Director implements Serializable {
     @TableField("ImagePath")
     private String ImagePath;
 
+    @TableField("biography")
+    private String biography;
+
 
 }

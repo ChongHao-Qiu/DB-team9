@@ -25,6 +25,12 @@ export default{
             url:`/movieservice/actor/GetTopActors/${num}`,
             method:'get'
         })
-    }
+    },
+    getDirectorInfo(dId){
+        return request({
+            url:`/movieservice/director/GetDirectorInfo/${dId}`,
+            method:'get'
+        })
+    },
 
 }

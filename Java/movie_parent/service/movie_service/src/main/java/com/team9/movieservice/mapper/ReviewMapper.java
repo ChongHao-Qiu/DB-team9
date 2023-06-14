@@ -2,6 +2,9 @@ package com.team9.movieservice.mapper;
 
 import com.team9.movieservice.entity.Review;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.team9.movieservice.entity.frontVo.ReviewShowVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface ReviewMapper extends BaseMapper<Review> {
 
+    List<ReviewShowVo> getReviewsByMovieId(Integer mid);
 }

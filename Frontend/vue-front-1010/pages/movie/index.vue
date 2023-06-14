@@ -19,7 +19,7 @@
                     <a title="total" href="#" @click="seachAll()" style="font-size: 18px; font-weight: bold; margin-left: 25px;">All</a>
                   </li>
                   <li v-for="(item,index) in cateList" :key="index" :class="{active:oneIndex==index}">
-                    <a :title="item.title" href="#" @click="searchOne(item.genreID,index)" style="font-size: 20px; margin-left: 22px;">{{ item.genreName }}</a>
+                    <a :title="item.title" href="#" @click="searchOne(item.genreID,index)" class="cate">{{ item.genreName }}</a>
                   </li>
                   
                 </ul>
@@ -35,31 +35,25 @@
               </span>
             </section>
             <section class="fl">
-              <ol class="js-tap clearfix">
-                <!-- <li :class="{'current bg-orange':buyCountSort!=''}">
-                  <a title="销量" href="javascript:void(0);" @click="serchBuyCount()">收藏量
-                  <span :class="{hide:buyCountSort==''}">↓</span>
-                  </a>
-                </li> -->
+              <ol class="js-tap clearfix" >
+
                 <li :class="{'current bg-orange':rateAvg!=''}">
-                  <a title="Rate" href="javascript:void(0);" @click="serchRateAvg()" style="font-size: 18px; margin-left: 5px;">Rate
+                  <a title="Rate" href="javascript:void(0);" @click="serchRateAvg()" class="rankFont">Rate
                   <span :class="{hide:rateAvg==''}">↓</span>
                   </a>
                 </li>
-                <li :class="{'current bg-orange':rateCount!=''}">
+                <!-- <li :class="{'current bg-orange':rateCount!=''}">
                   <a title="Rate Amount" href="javascript:void(0);" @click="serchRateCount()" style="font-size: 18px;">Rate Amount
                   <span :class="{hide:rateCount==''}">↓</span>
                   </a>
-                </li>
+                </li> -->
                 <li :class="{'current bg-orange':gmtCreateSort!=''}">
-                  <a title="Release Date" href="javascript:void(0);" @click="serchGmtCreateSort()" style="font-size: 20px;">Release Date
+                  <a title="Release Date" href="javascript:void(0);" @click="serchGmtCreateSort()" class="rankFont">Release Date
                   <span :class="{hide:gmtCreateSort==''}">↓</span>
                   </a>
                 </li>
                 <li >
-                  <!-- <a title="Release Date" @click="clearAndSearch()">Clear
-                  </a> -->
-                  <el-button type="" @click="clearAndSearch()" style="font-size: 20px;">Clear</el-button>
+                  <el-button type="" @click="clearAndSearch()" class="rankFont">Clear</el-button>
                 </li>
               </ol>
             </section>
@@ -82,16 +76,16 @@
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a :href="'/movie/'+item.movieID" :title="item.title" class="course-title fsize20 c-333">{{ item.title }}</a>
+                      <a :href="'/movie/'+item.movieID" :title="item.title" class="course-title fsize20 c-333 movieTitleFont">{{ item.title }}</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <!-- <span class="fr jgTag bg-green">
                         <i class="c-fff fsize12 f-fA">{{ Number(item.price) === 0 ?"免費":"付費" }}</i>
                       </span> -->
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">9634人学习</i>
+                        <i class="c-999 f-fA" style="font-size: 15px;">Official Rate: {{ item.rateAvg }}</i>
                         |
-                        <i class="c-999 f-fA">9634评论</i>
+                        <i class="c-999 f-fA" style="font-size: 15px;">Release Date: {{ item.releaseDate | formatDate }}</i>
                       </span>
                     </section>
                   </div>
@@ -138,6 +132,13 @@
         gmtCreateSort:'',
         rateAvg:'',
         rateCount:''
+      }
+    },
+    filters: {
+      formatDate(value) {
+        if (!value) return ''
+        value = value.toString()
+        return value.split(' ')[0]
       }
     },
     created(){
@@ -248,4 +249,20 @@
     white-space: nowrap;
   }
 
+.cate{
+  font-size: 22px; 
+  margin-left: 22px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.rankFont{
+  font-size: 23px; 
+  margin-left: 22px;
+  color:cadetblue;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.movieTitleFont{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 22px;
+}
 </style>

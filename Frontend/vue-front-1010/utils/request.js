@@ -8,9 +8,9 @@ const service = axios.create({
 
 service.interceptors.request.use(
     config =>{
-        if(cookie.get('guli_token')){
+        if(cookie.get('team9_token')){
             //get cookie information and put it in header
-            config.headers['token'] = cookie.get('guli_token');
+            config.headers['token'] = cookie.get('team9_token');
         }
         return config
         },

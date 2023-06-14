@@ -25,5 +25,8 @@ public class ActorInfoVo {
     @TableField("ImagePath")
     private String ImagePath;
 
+    @TableField("biography")
+    private String biography;
+
     private List<Movie> movieList;
 }

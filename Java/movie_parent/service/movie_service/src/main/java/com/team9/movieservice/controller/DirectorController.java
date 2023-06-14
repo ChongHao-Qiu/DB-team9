@@ -1,10 +1,13 @@
 package com.team9.movieservice.controller;
 
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.team9.commonutils.R;
+import com.team9.movieservice.entity.frontVo.ActorInfoVo;
+import com.team9.movieservice.entity.frontVo.DirectorInfoVo;
+import com.team9.movieservice.service.ActorService;
+import com.team9.movieservice.service.DirectorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -18,6 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RequestMapping("/movieservice/director")
 public class DirectorController {
+
+    @Autowired
+    private DirectorService directorService;
+
+    @GetMapping("GetDirectorInfo/{id}")
+    public R getActorInfo(@PathVariable String id){
+        DirectorInfoVo directorInfoVo= directorService.getDirectorInfoById(id);
+        return R.ok().data("director",directorInfoVo);
+    }
 
 }
 

@@ -2,6 +2,7 @@ package com.team9.movieservice.service;
 
 import com.team9.movieservice.entity.Director;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.team9.movieservice.entity.frontVo.DirectorInfoVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface DirectorService extends IService<Director> {
 
+    DirectorInfoVo getDirectorInfoById(String id);
 }

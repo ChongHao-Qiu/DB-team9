@@ -9,8 +9,8 @@
           </div>
           <div class="movie-info">
             <h2 class="movie-title">{{actor.name}}</h2>
-            <p class="movie-description">nationality:{{actor.nationality}}</p>
-            <p class="movie-description">Notableworks:{{actor.notableWorks}}</p>
+            <p class="movie-description" style="margin-top: 40px;">NATIONALITY: {{actor.nationality}}</p>
+            <p class="movie-description">BIOGRAPHY: {{actor.biography}}</p>
           </div>
         </div>
       </div>
@@ -36,11 +36,11 @@
         </section>
         <div class="clear"></div>
       </div> -->
-      <section class="mt30">
+      <section class="mt30" style=" margin-top: 50px;">
         <div>
           <header class="comm-title all-teacher-title c-course-content">
-            <h2 class="fl tac">
-              <span class="c-333">Representative works</span>
+            <h2 class="fl tac" >
+              <span class="c-333 repre">Representative works</span>
             </h2>
             <section class="c-tab-title">
               <a href="javascript: void(0)">&nbsp;</a>
@@ -49,7 +49,7 @@
           <!-- /无数据提示 开始-->
           <section v-if="movieList.length==0" class="no-data-wrap">
             <em class="icon30 no-data-ico">&nbsp;</em>
-            <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
+            <span class="c-666 fsize16 ml10 vam">No data found...</span>
           </section>
           <!-- /无数据提示 结束-->
           <article v-if="movieList.length>0" class="comm-course-list">
@@ -63,7 +63,7 @@
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a :href="'/movie/'+movie.movieID" :title="movie.title" class="course-title fsize20 c-333">{{ movie.title }}</a>
+                      <a :href="'/movie/'+movie.movieID" :title="movie.title" class="movieTitleFont fsize20 c-333">{{ movie.title }}</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <!-- <span class="fr jgTag bg-green">
@@ -149,24 +149,6 @@ export default {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.movie-genre {
-  margin-top: 50px;
-}
-
-.genre-tag {
-  border: 2px solid white;
-  padding: 6px 11px;
-  border-radius: 50px;
-  font-size: 20px;
-  color: #fff;
-  background-color: black;
-  margin-right: 12px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  justify-content: center; 
-  align-items: center;
-
-}
-
 .movie-description {
   margin: 20px 0;
   font-size: 20px;
@@ -224,6 +206,16 @@ export default {
 
 .movie-info {
   margin-left: 20px; /* 设定与movie-poster的距离 */
+}
+
+.repre{
+  font-size: 30px;
+  font-weight: bold;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.movieTitleFont{
+  font-size: 22px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 </style>

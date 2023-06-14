@@ -26,4 +26,13 @@
         ORDER BY ReleaseDate DESC
             LIMIT #{number}
     </select>
+
+    <select id="getCollectionByUserId"  resultType="com.team9.movieservice.entity.Movie">
+        SELECT *
+        FROM Movie m
+        where m.MovieID in
+              (SELECT u.MovieID
+               FROM UserMovieFavorite u
+               WHERE u.UserID = #{uid});
+    </select>
 </mapper>

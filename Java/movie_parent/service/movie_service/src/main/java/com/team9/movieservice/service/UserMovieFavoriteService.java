@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserMovieFavoriteService extends IService<UserMovieFavorite> {
 
+    void insertNewCollect(UserMovieFavorite userMovieFavorite);
+
+    void removeCollect(UserMovieFavorite userMovieFavorite);
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.team9.movieservice.entity.Actor;
+import com.team9.movieservice.entity.Director;
 import com.team9.movieservice.entity.MovieGenre;
 import lombok.Data;
 
@@ -48,4 +49,6 @@ public class MovieShowVo {
     @TableField("Genre")
     private List<MovieGenre> GenreList;
 
+    @TableField("Director")
+    private Director director;
 }

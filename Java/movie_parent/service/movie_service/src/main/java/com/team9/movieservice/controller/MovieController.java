@@ -1,6 +1,7 @@
 package com.team9.movieservice.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.team9.commonutils.R;
 import com.team9.movieservice.entity.Movie;
@@ -70,6 +71,28 @@ public class MovieController {
         return R.ok().data("movieList",list);
     }
 
+    @GetMapping("getMyCollections/{uid}")
+    public R getMyCollections(@PathVariable String uid)
+    {
+
+        List<Movie> movies = movieService.getCollectionByUserId(uid);
+
+        return R.ok().data("movieList",movies);
+    }
+
+    @GetMapping("getByMovieName/{name}")
+    public R getByMovieName(@PathVariable String name){
+        QueryWrapper<Movie> wrapper = new QueryWrapper<>();
+        wrapper.like("Title",name);
+        System.out.println(name);
+        int count = movieService.count(wrapper);
+        if(count >0){
+            Integer id = movieService.getOne(wrapper).getMovieID();
+            return R.ok().data("movieId",id);
+        }else{
+            return R.ok().data("movieId",-1);
+        }
+    }
 
 }
 

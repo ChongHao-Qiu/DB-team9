@@ -22,4 +22,6 @@ public interface MovieMapper extends BaseMapper<Movie> {
     List<MovieGenre> selectGenresByMovieId(Integer movieId);
 
     List<Movie> getLatestMovies(Integer num);
+
+    List<Movie> getCollectionByUserId(String uid);
 }

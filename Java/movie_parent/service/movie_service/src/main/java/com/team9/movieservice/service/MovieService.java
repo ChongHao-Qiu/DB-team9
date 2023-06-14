@@ -27,4 +27,6 @@ public interface MovieService extends IService<Movie> {
     MovieShowVo getMovieInfoById(String id);
 
     List<Movie> getNewMoviesByNum(Integer num);
+
+    List<Movie> getCollectionByUserId(String uid);
 }

@@ -31,6 +31,52 @@ export default{
             url:`/movieservice/movie/getNewMovies/${num}`,
             method:'get'
         })
-    }
+    },
+    getReviewByMovieId(movieId){
+        return request({
+            url:`/movieservice/review/GetReviewByMovieId/${movieId}`,
+            method:'get'
+        })
+    },
+    sendReview(reviewBody){
+        return request({
+            url:`/movieservice/review/addReview`,
+            method:'post',
+            data:reviewBody
+        })
+    },
+    addCollect(userMovieFavorite){
+        return request({
+            url:`/movieservice/user-movie-favorite/addCollect`,
+            method:'post',
+            data:userMovieFavorite
+        })
+    },
+    deleteCollect(userMovieFavorite){
+        return request({
+            url:`/movieservice/user-movie-favorite/cancelCollect`,
+            method:'delete',
+            data:userMovieFavorite
+        })
+    },
+    isCollected(uid,mid){
+        return request({
+            url:`/movieservice/user-movie-favorite/isCollect/${uid}/${mid}`,
+            method:'get'
+        })
+    },
+    getMyCollections(uid){
+        return request({
+            url:`/movieservice/movie/getMyCollections/${uid}`,
+            method:'get'
+        })
+    },
+    getByMovieName(name){
+        return request({
+            url:`/movieservice/movie/getByMovieName/${name}`,
+            method:'get'
+        })
+    },
+
 
 }

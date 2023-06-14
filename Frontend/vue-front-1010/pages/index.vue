@@ -21,8 +21,8 @@
       <div>
         <section class="container">
           <header class="comm-title">
-            <h2 class="tac">
-              <span class="c-333">New Movies</span>
+            <h2 class="tac" style="margin-top: 50px;">
+              <span class="c-333 mylablefont">Latest Movies</span>
             </h2>
           </header>
           <div>
@@ -40,7 +40,7 @@
                       </a>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a :href="/movie/+movie.movieID" :title="movie.title" class="course-title fsize18 c-333">{{movie.title}}</a>
+                      <a :href="/movie/+movie.movieID" :title="movie.title" class="course-title fsize20 c-333 movieTitleFont" >{{movie.title}}</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <!-- <span class="fl jgAttr c-ccc f-fA">
@@ -55,8 +55,8 @@
               </ul>
               <div class="clear"></div>
             </article>
-            <section class="tac pt20">
-              <a href="/movie" title="全部课程" class="comm-btn c-btn-2">View All Movies</a>
+            <section class="tac pt20" style="margin-top:-50px;">
+              <a href="/movie" title="全部课程" class="comm-btn c-btn-2 myfont" >View All Movies</a>
             </section>
           </div>
         </section>
@@ -66,8 +66,8 @@
       <div>
         <section class="container">
           <header class="comm-title">
-            <h2 class="tac">
-              <span class="c-333">Stars</span>
+            <h2 class="tac" style="margin-top: 60px;">
+              <span class="c-333 mylablefont">Popular Actors</span>
             </h2>
           </header>
           <div>
@@ -81,18 +81,18 @@
                       </a>
                     </div>
                     <div class="mt10 hLh30 txtOf tac">
-                      <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666">{{actor.name}}</a>
+                      <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666 movieTitleFont" >{{actor.name}}</a>
                     </div>
-                    <div class="hLh30 txtOf tac">
+                    <!-- <div class="hLh30 txtOf tac">
                       <span class="fsize14 c-999">{{actor.notableWorks}}</span>
-                    </div>
+                    </div> -->
                   </section>
                 </li>
               </ul>
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="/actor" title="全部讲师" class="comm-btn c-btn-2">View All Actors</a>
+              <a href="/actor" title="全部讲师" class="comm-btn c-btn-2 myfont">View All Actors</a>
             </section>
           </div>
         </section>
@@ -194,6 +194,24 @@ export default {
   margin-bottom: 10px;
   word-break: keep-all;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.myfont{
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 30px;
+}
+
+.mylablefont{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 40px;
+  color: #000;
+  position: relative; /* 添加相对定位 */
+  z-index: 1; /* 设置较高的 z-index 值 */
+}
+
+.movieTitleFont{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 22px;
 }
 /* .rounded-image {
   border-radius: 20%;

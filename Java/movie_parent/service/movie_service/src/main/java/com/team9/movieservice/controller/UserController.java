@@ -40,7 +40,9 @@ public class UserController {
     @GetMapping("getMemberInfo")
     public R getMemberInfo(HttpServletRequest request){
         String memberId = JwtUtils.getMemberIdByJwtToken(request);
+        System.out.println(memberId);
         User member = userService.getById(memberId);
+        System.out.println(member);
         return R.ok().data("userInfo", member);
     }
 

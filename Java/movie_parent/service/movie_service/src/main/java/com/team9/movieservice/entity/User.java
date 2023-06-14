@@ -28,8 +28,8 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "UserID", type = IdType.AUTO)
-    private Integer UserID;
+    @TableId(value = "UserID", type = IdType.ID_WORKER_STR)
+    private String UserID;
 
     @TableField("Username")
     private String Username;

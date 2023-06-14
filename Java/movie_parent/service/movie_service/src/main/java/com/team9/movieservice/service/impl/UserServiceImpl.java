@@ -8,6 +8,7 @@ import com.team9.movieservice.mapper.UserMapper;
 import com.team9.movieservice.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.team9.servicebase.exceptionhandler.EasyPcException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -46,12 +47,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         String jwtToken = JwtUtils.getJwtToken(member.getUserID().toString(), member.getUsername());
-
         return jwtToken;
     }
 
     @Override
     public void register(User user) {
+        User member = new User();
+        BeanUtils.copyProperties(user,member);
         //獲取註冊的數據
         String email = user.getEmail();
         String nickname = user.getUsername();
@@ -63,12 +65,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw new EasyPcException(20001,"Register Failed - Please enter full information");
         }
 
-        //判斷驗證碼
-        //獲取驗證碼
-//        String redisCode = redisTemplate.opsForValue().get(mobile);
-//        if(!code.equals(redisCode)){
-//            throw new EasyPcException(20001,"Register Failed - 驗證碼錯誤");
-//        }
 
         //判斷email
         QueryWrapper<User> wrapper = new QueryWrapper<>();
@@ -79,12 +75,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
 
         //數據添加到數據庫
-        User member = new User();
         member.setPassword(MD5.encrypt(password));
-        member.setEmail(email);
-//        member.setPassword(MD5.encrypt(password)); //encrypt
-        member.setUsername(nickname);
         member.setAvatarPath("https://chonghaoqiu-edu.oss-cn-hongkong.aliyuncs.com/2023/06/09/avatar.png");//默認圖像
-        baseMapper.insert(member);
+        System.out.println(member);
+        int insert =  baseMapper.insert(member);
+        if(insert == 0){
+            throw new EasyPcException(20001, "Upload User Information Failed");
+        }
     }
 }

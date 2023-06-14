@@ -4,48 +4,44 @@
     <header id="header">
       <section class="container">
         <h1 id="logo">
-          <a href="#" title="谷粒学院">
+          <a href="/" title="谷粒学院">
             <img src="~/assets/img/logo.png" width="100%" alt="谷粒学院">
           </a>
         </h1>
         <div class="h-r-nsl">
           <ul class="nav">
             <router-link to="/" tag="li" active-class="current" exact>
-              <a>Home Page</a>
+              <a class="navi">Home</a>
             </router-link>
             <router-link to="/movie" tag="li" active-class="current">
-              <a>Film Library</a>
+              <a class="navi">Movies</a>
             </router-link>
             <router-link to="/actor" tag="li" active-class="current">
-            <a>Actors</a>
+            <a class="navi">Actors</a>
             </router-link>
-            <!-- <router-link to="/article" tag="li" active-class="current">
-              <a>文章</a>
+            <router-link to="/collection" tag="li" active-class="current">
+              <a class="navi">My Collections</a>
             </router-link>
-            <router-link to="/qa" tag="li" active-class="current">
-              <a>问答</a> 
-            </router-link> -->
           </ul>
           <!-- / nav -->
           <ul class="h-r-login">
             <li v-if="!LoginInfo.userID" id="no-login">
               <a href="/login" title="登录">
                 <em class="icon18 login-icon">&nbsp;</em>
-                <span class="vam ml5">sign in</span>
+                <span class="vam ml5">sign in |</span>
               </a>
-              |
               <a href="/register" title="注册">
                 <span class="vam ml5">sign up</span>
               </a>
             </li>
             <li v-if="LoginInfo.userID" id="is-login-one" class="mr10">
-              <a id="headerMsgCountId" href="#" title="消息">
+              <a id="headerMsgCountId"  title="消息">
                 <em class="icon18 news-icon">&nbsp;</em>
               </a>
               <q class="red-point" style="display:none">&nbsp;</q>
             </li>
             <li v-if="LoginInfo.userID" class="h-r-user" id="is-login-two">
-              <a href="/ucenter" title>
+              <a title>
                 <img
                   :src="LoginInfo.avatarPath"
                   width="30"
@@ -53,30 +49,34 @@
                   class="vam picImg"
                   alt
                 >
-                <span class="vam disIb" id="userName">{{ LoginInfo.username }}</span>
+                <span class="disIb vam" id="userName">{{ LoginInfo.username }}</span>
               </a>
-              <a href="javascript:void(0)" title="退出" @click="exit()" class="ml5">Exit</a>
+              <a href="javascript:void(0)" title="exit" @click="exit()" class="ml5 info">| Exit</a>
+
             </li>
             <!-- /未登录显示第1 li；登录后显示第2，3 li -->
           </ul>
           <aside class="h-r-search">
-            <form action="#" method="post">
+            <form >
               <label class="h-r-s-box">
-                <input type="text" placeholder="search" name="queryCourse.courseName" value>
-                <button type="submit" class="s-btn">
+                <input type="text" style="width: 160px; font-size: 22px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" v-model="searchName" placeholder="search movie" name="queryCourse.courseName" value>
+                
+                <button type="submit" @click="handleSearch()" class="s-btn">
                   <em class="icon18">&nbsp;</em>
                 </button>
               </label>
             </form>
           </aside>
         </div>
-        <aside class="mw-nav-btn">
+        <!-- <aside class="mw-nav-btn">
           <div class="mw-nav-icon"></div>
-        </aside>
+        </aside> -->
         <div class="clear"></div>
       </section>
     </header>
       
+
+
     <!-- /公共头引入 这边存放了pages里面的index -->
     <nuxt/>
 
@@ -85,11 +85,11 @@
       <section class="container">
         <div class>
           <h4 class="hLh30">
-            <span class="fsize18 f-fM c-999">友情链接</span>
+            <span class="fsize18 f-fM c-999" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;">Team 9</span>
           </h4>
           <ul class="of flink-list">
             <li>
-              <a href="http://www.atguigu.com/" title="尚硅谷" target="_blank">尚硅谷</a>
+              <span title="Database System" target="_blank" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 18px;">Instructor: Prof. Jia-Ling Koh </span>
             </li>
           </ul>
           <div class="clear"></div>
@@ -98,30 +98,17 @@
           <section class="fl col-7">
             <section class="mr20">
               <section class="b-f-link">
-                <a href="#" title="关于我们" target="_blank">关于我们</a>|
-                <a href="#" title="联系我们" target="_blank">联系我们</a>|
-                <a href="#" title="帮助中心" target="_blank">帮助中心</a>|
-                <a href="#" title="资源下载" target="_blank">资源下载</a>|
-                <span>服务热线：010-56253825(北京) 0755-85293825(深圳)</span>
-                <span>Email：info@atguigu.com</span>
+                <a href="#" title="关于我们" target="_blank" class="info">About us</a>|
+                <a href="#" title="联系我们" target="_blank" class="info">Contact us</a>|
+                <a href="#" title="帮助中心" target="_blank" class="info">Help</a>|
+                <a href="#" title="资源下载" target="_blank" class="info">Resources</a>|
               </section>
               <section class="b-f-link mt10">
-                <span>©2018课程版权均归谷粒学院所有 京ICP备17055252号</span>
+                <span class="info">©1112 Database Theories</span>
               </section>
             </section>
           </section>
-          <aside class="fl col-3 tac mt15">
-            <section class="gf-tx">
-              <span>
-                <img src="~/assets/img/wx-icon.png" alt>
-              </span>
-            </section>
-            <section class="gf-tx">
-              <span>
-                <img src="~/assets/img/wb-icon.png" alt>
-              </span>
-            </section>
-          </aside>
+     
           <div class="clear"></div>
         </div>
       </section>
@@ -142,6 +129,7 @@ import '~/assets/css/order.css'
 import '~/assets/css/swiper-3.3.1.min.css'
 import "~/assets/css/pages-weixinpay.css"
 import cookie from 'js-cookie'
+import movieApi from '@/api/course'
 
 
 export default {
@@ -153,8 +141,9 @@ export default {
         avatarPath:'',
         email:'',
         username:'',
+        dialogFormVisible:false,
+        searchName:''
       }
-
     }
   },
   created(){
@@ -163,22 +152,54 @@ export default {
   methods:{
     //get userinfo from cookie
     showInfo(){
-      console.log("get cookie:")
-      var userStr = cookie.get('guli_ucenter')
-      console.log("get info:")
-      console.log(userStr)
+      var userStr = cookie.get('team9_user')
       if(userStr){
         this.LoginInfo = JSON.parse(userStr)
-        console.log(this.LoginInfo.avatarPath)
       }
     },
     exit(){
       console.log("exit excuted")
-      cookie.set('guli_token','',{domain:'localhost'})
-      cookie.set('guli_ucenter','',{domain:'localhost'})
+      cookie.set('team9_token','',{domain:'localhost'})
+      cookie.set('team9_user','',{domain:'localhost'})
       //
       window.location.href="/"
-    }
+    },
+    openDialog(){
+      console.log("click")
+      this.dialogFormVisible = true
+    },
+    handleSearch(){
+      this.getMovieId()
+    },
+    getMovieId(){
+      movieApi.getByMovieName(this.searchName)
+        .then(response=>{
+          if(response.data.data.movieId == -1){
+            //需要chatGPT幫我navigate到/movie頁面
+            window.location.href = '/movie'
+          }else{
+            //需要chatGPT幫我navigate到/movie/'+response.data.data.movieId頁面
+            window.location.href = '/movie/' + response.data.data.movieId
+          }
+        })
+    },
   }
 };
 </script>
+<style scoped>
+.navi{
+  font-size: 22px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.vam{
+  font-size: 22px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.info
+{
+  font-size: 18px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+</style>
