@@ -19,7 +19,7 @@
                     <p class="actor-name">{{director.name}}</p>
                   </a>
                 </div>
-                <div class="actor-card" v-for="actor in movieWebVo.actorList" :key="actor.id">
+                <div class="actor-card" v-for="actor in movieWebVo.actorList" :key="actor.actorID">
                   <a :href="'/actor/'+actor.actorID">
                     <img :src="baseUrl+actor.imagePath" class="actor-img">
                     <p class="actor-name">{{actor.name}}</p>

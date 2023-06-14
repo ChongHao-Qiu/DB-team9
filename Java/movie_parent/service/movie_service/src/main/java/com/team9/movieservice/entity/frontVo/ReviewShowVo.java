@@ -23,7 +23,7 @@ public class ReviewShowVo {
     private String Content;
 
     @TableField("UserID")
-    private Integer UserID;
+    private String UserID;
 
     @TableField("ReviewTime")
     private Date ReviewTime;

@@ -8,5 +8,6 @@
         FROM Review r
                  INNER JOIN User u ON r.UserID = u.UserID
         WHERE r.MovieId = #{movieID}
+        ORDER BY r.ReviewTime
     </select>
 </mapper>

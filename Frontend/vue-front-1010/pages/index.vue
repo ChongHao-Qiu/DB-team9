@@ -3,7 +3,7 @@
     <!-- Homepage -->
     <div v-swiper:mySwiper="swiperOption">
       <div class="swiper-wrapper">
-        <a v-for="banner in bannerList" :key="banner.movieID" target="_blank" :href="'/movie/' + banner.movieID" class="swiper-slide" :style="{backgroundImage: 'linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0), rgba(255,255,255,1)), url(' + baseUrl + banner.bannerPath + ')', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+        <a v-for="banner in bannerList" :key="banner.movieID" :href="'/movie/' + banner.movieID" class="swiper-slide" :style="{backgroundImage: 'linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0), rgba(255,255,255,1)), url(' + baseUrl + banner.bannerPath + ')', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
           <div class="slide-content">
             <!-- <img :src="baseUrl+banner.picUrl" :alt="banner.title" class="movie-poster"> -->
             <!-- <h2 class="movie-title">{{banner.title}}</h2> -->
@@ -76,12 +76,12 @@
                 <li v-for=" actor in actorList" :key="actor.actorID" class="flex-item">
                   <section class="i-teach-wrap">
                     <div class="i-teach-pic">
-                      <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank">
+                      <a :href="'/actor/'+actor.actorID" :title="actor.name" >
                         <img class="rounded-image" :src="baseUrl+actor.imagePath" :alt="actor.name">
                       </a>
                     </div>
                     <div class="mt10 hLh30 txtOf tac">
-                      <a :href="'/actor/'+actor.actorID" :title="actor.name" target="_blank" class="fsize18 c-666 movieTitleFont" >{{actor.name}}</a>
+                      <a :href="'/actor/'+actor.actorID" :title="actor.name"  class="fsize18 c-666 movieTitleFont" >{{actor.name}}</a>
                     </div>
                     <!-- <div class="hLh30 txtOf tac">
                       <span class="fsize14 c-999">{{actor.notableWorks}}</span>
