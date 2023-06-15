@@ -3,7 +3,7 @@ import cookie from 'js-cookie'
 import { Message, MessageBox } from 'element-ui'
 
 const service = axios.create({
-    baseURL:'http://192.168.1.108:8201',
+    baseURL:'http://localhost:8201',
     timeout:20000 //请求超过的时间
 })
 

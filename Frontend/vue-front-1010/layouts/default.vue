@@ -159,8 +159,8 @@ export default {
     },
     exit(){
       console.log("exit excuted")
-      cookie.set('team9_token','',{domain:'192.168.1.108'})
-      cookie.set('team9_user','',{domain:'192.168.1.108'})
+      cookie.set('team9_token','',{domain:'localhost'})
+      cookie.set('team9_user','',{domain:'localhost'})
       //
       window.location.href="/"
     },

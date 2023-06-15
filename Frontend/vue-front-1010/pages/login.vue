@@ -75,7 +75,7 @@
                 }else{
                   //Step2: 获取token 放入cookie中
                   this.token = response.data.data.token
-                  cookie.set('team9_token',response.data.data.token,{domain:'192.168.1.108'})
+                  cookie.set('team9_token',response.data.data.token,{domain:'localhost'})
                   //Step3:創建攔截器
                   //已經在request.js中實現
                   //Step4: 根據token 獲取用戶信息，為了首頁顯示
@@ -83,7 +83,7 @@
                     .then(response =>{
                       this.loginInfo = JSON.stringify(response.data.data.userInfo)
                       console.log("!!info:"+JSON.stringify(this.loginInfo))
-                      cookie.set('team9_user', this.loginInfo,{domain:'192.168.1.108'})
+                      cookie.set('team9_user', this.loginInfo,{domain:'localhost'})
                       
                       //跳轉登陸頁面
                       window.location.href = "/"
