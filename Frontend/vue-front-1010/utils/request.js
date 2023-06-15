@@ -1,5 +1,6 @@
 import axios from 'axios'
 import cookie from 'js-cookie'
+import { Message, MessageBox } from 'element-ui'
 
 const service = axios.create({
     baseURL:'http://192.168.1.108:8201',
@@ -45,6 +46,12 @@ service.interceptors.response.use(
       }
     },
     error => {
+      console.log('err' + error) // for debug
+      Message({
+        message: error.message,
+        type: 'error',
+        duration: 5 * 1000
+      })
       return Promise.reject(error.response)   // 返回接口返回的错误信息
   });
   

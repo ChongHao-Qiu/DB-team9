@@ -77,6 +77,8 @@
     },
     created(){
       this.showInfo()
+    },
+    mounted(){
       this.getMovieList()
     },
     methods:{
@@ -88,10 +90,17 @@
         }
       },
       getMovieList(){
-        courseApi.getMyCollections(this.LoginInfo.userID)
+        if(this.LoginInfo.userID == ''){
+          this.$message({
+                        type:'false',
+                        message:'Please Login'
+                    })
+        }else{
+          courseApi.getMyCollections(this.LoginInfo.userID)
           .then(response=>{
              this.movieList= response.data.data.movieList
           })
+        }
       },
     },
   };

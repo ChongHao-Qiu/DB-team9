@@ -187,17 +187,25 @@ export default {
       let userMovieFavorite = {}
       userMovieFavorite.movieID = this.movieId
       userMovieFavorite.userID = this.loginInfo.userID
-      if(this.isCollect == 1){
+      if(this.loginInfo.userID == null){
+        this.$message({
+                        type:'false',
+                        message:'Please Login'
+                    })
+      }else{
+        if(this.isCollect == 1){
         movieApi.deleteCollect(userMovieFavorite)
           .then(response=>{
             this.getCollectStatus()
           })
-      }else{
-        movieApi.addCollect(userMovieFavorite)
-          .then(response=>{
-            this.getCollectStatus()
-          })
+        }else{
+          movieApi.addCollect(userMovieFavorite)
+            .then(response=>{
+              this.getCollectStatus()
+            })
+        }
       }
+
     },
   },
 };

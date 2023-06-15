@@ -6,7 +6,10 @@
         <a href="/register">sign up</a>
       </div>
   
+      
       <div class="sign-up-container">
+        <client-only>
+
         <el-form ref="userForm" :model="user">
   
           <el-form-item class="input-prepend restyle" prop="email" :rules="[{ required: true, message: 'please enter your email', trigger: 'blur' },{validator: checkEmail, trigger: 'blur'}]">
@@ -22,19 +25,12 @@
               <i class="iconfont icon-password"/>
             </div>
           </el-form-item>
-  
           <div class="btn">
             <input type="button" class="sign-in-button" value="Login" @click="submitLogin()">
           </div>
         </el-form>
-        <!-- 更多登录方式 -->
-        <!-- <div class="more-sign">
-          <h6>社交帐号登录</h6>
-          <ul>
-            <li><a id="weixin" class="weixin" target="_blank" href="http://qy.free.idcfengye.com/api/ucenter/weixinLogin/login"><i class="iconfont icon-weixin"/></a></li>
-            <li><a id="qq" class="qq" target="_blank" href="#"><i class="iconfont icon-qq"/></a></li>
-          </ul>
-        </div> -->
+        </client-only>
+
 
 
       </div>
@@ -45,6 +41,7 @@
   <script>
     import '~/assets/css/sign.css'
     import '~/assets/css/iconfont.css'
+    import { Message } from 'element-ui';
   
     import cookie from 'js-cookie'
 
@@ -69,21 +66,29 @@
            //Step1: 调用接口，返回token字符串
             loginApi.submitLogin(this.user)
               .then(response =>{
-                //Step2: 获取token 放入cookie中
-                this.token = response.data.data.token
-                cookie.set('team9_token',response.data.data.token,{domain:'192.168.1.108'})
-                //Step3:創建攔截器
-                //已經在request.js中實現
-                //Step4: 根據token 獲取用戶信息，為了首頁顯示
-                loginApi.getUserInfo()
-                  .then(response =>{
-                    this.loginInfo = JSON.stringify(response.data.data.userInfo)
-                    console.log("!!info:"+JSON.stringify(this.loginInfo))
-                    cookie.set('team9_user', this.loginInfo,{domain:'192.168.1.108'})
-                    
-                    //跳轉登陸頁面
-                    window.location.href = "/"
-                  })
+                if(response.success == false){
+                  console.log("失败了")
+                  this.$message({
+                      type: 'success',
+                      message: "登陆失败"
+                    })
+                }else{
+                  //Step2: 获取token 放入cookie中
+                  this.token = response.data.data.token
+                  cookie.set('team9_token',response.data.data.token,{domain:'192.168.1.108'})
+                  //Step3:創建攔截器
+                  //已經在request.js中實現
+                  //Step4: 根據token 獲取用戶信息，為了首頁顯示
+                  loginApi.getUserInfo()
+                    .then(response =>{
+                      this.loginInfo = JSON.stringify(response.data.data.userInfo)
+                      console.log("!!info:"+JSON.stringify(this.loginInfo))
+                      cookie.set('team9_user', this.loginInfo,{domain:'192.168.1.108'})
+                      
+                      //跳轉登陸頁面
+                      window.location.href = "/"
+                    })
+                  }
               })
         },
         checkEmail(rule, value, callback) {

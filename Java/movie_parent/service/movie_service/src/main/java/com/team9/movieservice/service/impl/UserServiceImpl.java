@@ -12,6 +12,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * <p>
  *  服务实现类
@@ -64,9 +67,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 || StringUtils.isEmpty(password) ){
             throw new EasyPcException(20001,"Register Failed - Please enter full information");
         }
-
-
         //判斷email
+        String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(email);
+        if (!matcher.matches()) {
+            throw new EasyPcException(20001,"Email account format is incorrect");
+        }
+
+
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("Email", email);
         Integer count = baseMapper.selectCount(wrapper);

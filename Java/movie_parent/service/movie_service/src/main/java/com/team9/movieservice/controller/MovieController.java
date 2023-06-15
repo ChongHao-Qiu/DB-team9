@@ -10,7 +10,9 @@ import com.team9.movieservice.entity.frontVo.MovieFrontVo;
 import com.team9.movieservice.entity.frontVo.MovieShowVo;
 import com.team9.movieservice.service.MovieGenreService;
 import com.team9.movieservice.service.MovieService;
+import com.team9.servicebase.exceptionhandler.EasyPcException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -74,7 +76,6 @@ public class MovieController {
     @GetMapping("getMyCollections/{uid}")
     public R getMyCollections(@PathVariable String uid)
     {
-
         List<Movie> movies = movieService.getCollectionByUserId(uid);
 
         return R.ok().data("movieList",movies);
